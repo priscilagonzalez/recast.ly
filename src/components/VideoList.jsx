@@ -1,17 +1,29 @@
-var VideoList = () => (
+// a component for generating a list of videos
+import exampleVideoData from '../data/exampleVideoData.js';
+import VideoListEntry from './VideoListEntry.js';
+
+var VideoList = (props) => (
   <div className="video-list">
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
+    {props.videos.map(video =>
+      <VideoListEntry video={video} />
+    )}
   </div>
 );
+
+//VideoListEntry is instantiated like this:  <VideoListEntry video={window.fakeVideoData[0]} />
+
+// var VideoList = (props) => (
+//   <div className="video-list">
+
+//   </div>
+// );
+
 
 //What do we want to do with exampleVideoData?
 
 //instantiate VideoList component with dummy data
-//<TodoList todos={['Learn React', 'Crush Recast.ly', 'Maybe sleep']}/> // Here we are creating an instance of the `TodoList` component
+//<VideoList videos={['Learn React', 'Crush Recast.ly', 'Maybe sleep']}/> // Here we are creating an instance of the `TodoList` component
+//app.jsx comparing ap
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated

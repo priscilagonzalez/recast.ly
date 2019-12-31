@@ -1,9 +1,12 @@
 // TODO: Render the `App` component to the DOM
 import App from './components/App.js';
-import VideoList from './components/VideoList.js';
+import exampleVideoData from '../data/exampleVideoData.js';
+console.log(exampleVideoData);
 
 ReactDOM.render(<App/>, document.getElementById("app"));
-ReactDOM.render(<VideoList/>, document.getElementByClass("col-md-5"));
+//ReactDOM.render(<VideoList/>, document.getElementByClass("col-md-5"));
+
+
 
 //What doesnt work here?
 
