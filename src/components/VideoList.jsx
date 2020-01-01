@@ -2,10 +2,10 @@
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoListEntry from './VideoListEntry.js';
 
-var VideoList = (props) => (
+var VideoList = ({videos, handleVideoChange}) => (
   <div className="video-list">
-    {props.videos.map(video =>
-      <VideoListEntry video={video} />
+    {videos.map(video =>
+      <VideoListEntry video={video} key={video.id.videoId} handleVideoChange={handleVideoChange}/>
     )}
   </div>
 );
