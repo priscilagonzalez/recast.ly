@@ -1,9 +1,8 @@
-//top level react container
-//TODO replace 'views goes here'of col-md-5
-////<VideoList videos={exampleVideoData}/>
+
 import VideoList from './VideoList.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoPlayer from './VideoPlayer.js';
+import Search from './Search.js';
 
 // var App = () => (
 //   <div>
@@ -29,7 +28,24 @@ class App extends React.Component {
     this.state = {
       videos: exampleVideoData,
       currentVideo: exampleVideoData[0]
-    }
+    };
+  }
+
+  componentDidMount() {
+    this.getYouTubeVideos('cute kittens');
+  }
+
+  getYouTubeVideos(query) {
+    var options = {
+      key: this.props.API_KEY,
+      query: query
+    };
+    this.props.searchYouTube(options, (videos) =>
+      this.setState({
+        videos: videos,
+        currentVideo: videos[0]
+      })
+    );
   }
 
   handleVideoChange(video) {
@@ -43,7 +59,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <div><h5><em>search</em> <Search handleSearchInputChange={this.getYouTubeVideos.bind(this)}/></h5></div>
           </div>
         </nav>
           <div className="row">
@@ -55,12 +71,12 @@ class App extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
 
   }
 
 }
-// <VideoList videos={...exampleVideoData}/> //goes in videoList
+
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 export default App;
